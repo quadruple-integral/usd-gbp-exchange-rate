@@ -1,0 +1,17 @@
+```{r}
+library(tidyverse)
+library(here)
+
+data <- read_csv(here("data/data.csv"))
+```
+
+```{r}
+as.tibble(data)
+data <- data
+data <- rename(data, date = DATE, usd_to_gbp = DEXUSUK)
+```
+
+```{r}
+ggplot(data = data) +
+  geom_point(mapping = aes(x = date, y = usd_to_gbp))
+```
